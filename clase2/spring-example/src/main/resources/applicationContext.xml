@@ -1,0 +1,26 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd ">
+        
+        <context:component-scan base-package="net.tecgurus"></context:component-scan>
+        <!-- 
+        <context:annotation-config></context:annotation-config>
+	
+	<bean class="net.tecgurus.service.impl.HelloWorldServiceImpl" name="helloWorldService">
+	</bean>
+	
+	<bean class="net.tecgurus.service.impl.ProcesaSaludoPersonalizadoImpl" 
+	name="procesaSaludoPersonalizado">
+		<property name="servicioBase" 
+		ref="helloWorldService"></property>
+		<property name="nombreOutput" 
+		value="Amaro Coria"></property>
+	</bean>
+	-->
+
+</beans>
