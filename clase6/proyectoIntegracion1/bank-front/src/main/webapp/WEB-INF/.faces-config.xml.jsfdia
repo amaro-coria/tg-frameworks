@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:*" PATH="*" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:0" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="clientes::#pages#clientes_manager.xhtml"
+    NAME="output" PATH="/pages/clientes_manager.xhtml"
+    TARGET="rules:#pages#clientes_manager.xhtml" TITLE="clientes" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="bancos::#pages#banco_manager.xhtml"
+    NAME="output1" PATH="/pages/banco_manager.xhtml"
+    TARGET="rules:#pages#banco_manager.xhtml" TITLE="bancos" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#clientes_manager.xhtml"
+  PATH="/pages/clientes_manager.xhtml" SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#banco_manager.xhtml"
+  PATH="/pages/banco_manager.xhtml" SHAPE="256,177,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

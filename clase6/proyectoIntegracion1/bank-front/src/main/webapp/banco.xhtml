@@ -1,0 +1,48 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<h:body>
+	<h1>Administrador de instancias de banco</h1>
+	<div>
+		<h:form id="formTabla">
+			<p:growl autoUpdate="true" />
+			<p:dataTable value="#{controladorBanco.itemsList}" var="item"
+				rows="5" paginator="true"
+				currentPageReportTemplate="{startRecord} de {endRecord}"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,15" paginatorPosition="bottom" id="table">
+				<p:column headerText="ID" filterBy="#{item.id}" sortBy="#{item.id}"
+					filterMatchMode="contains">
+					<h:outputText value="#{item.id}" />
+				</p:column>
+				<p:column headerText="Nombre" filterBy="#{item.nombre}"
+					sortBy="#{item.nombre}" filterMatchMode="exact">
+					<h:outputText value="#{item.nombre}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</div>
+	<div>
+		<hr></hr>
+		<h2>Formulario para alta de banco</h2>
+		<h:form id="formAlta">
+			<h:panelGrid columns="3">
+				<p:outputPanel id="panelAlta">
+					<p:outputLabel value="Nombre del banco" for="iput_nombre_banco" />
+					<p:inputText id="iput_nombre_banco" required="true"
+						value="#{controladorBanco.bancoNombre}" />
+					<p:watermark value="Nombre de tu banco" for="iput_nombre_banco" />
+				</p:outputPanel>
+
+			</h:panelGrid>
+			<h:panelGrid columns="2">
+				<p:commandButton value="Guardar Nuevo"
+					action="#{controladorBanco.aggregaNuevoBanco}"
+					update=":formTabla:table :formAlta:panelAlta" />
+			</h:panelGrid>
+		</h:form>
+	</div>
+</h:body>
+</html>

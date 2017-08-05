@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:body>
+	<ui:composition template="/WEB-INF/templates/template.xhtml">
+		<ui:define name="content">
+			<h:form id="form">
+				<p:growl id="growl" sticky="false" autoUpdate="true"
+					showDetail="true" />
+				<h2>Acciones</h2>
+				<h:panelGrid columns="4">
+					<p:commandButton value="#{msg.action_detail}" icon="ui-icon-zoomin"
+						
+						oncomplete="PF('detalle_dialog').show();"
+						update=":formDetalle:panel_detalle_ver" 
+						
+						/>
+					<p:commandButton value="#{msg.action_new}" icon="ui-icon-plusthick"
+						onclick="PF('new_dialog').show();" />
+					<p:commandButton value="Editar" icon="ui-icon-pencil" />
+					<p:commandButton value="Eliminar" icon="ui-icon-trash" />
+				</h:panelGrid>
+				<p:panel header="Bancos">
+					<p:dataTable value="#{controladorBanco.itemsList}" 
+						var="item"
+						
+						rows="5" paginator="true"
+						
+						selection="#{controladorBanco.currentItem}" selectionMode="single"
+						rowKey="#{item.id}"
+						
+						currentPageReportTemplate="{startRecord} de {endRecord}"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						rowsPerPageTemplate="5,10,15" paginatorPosition="bottom"
+						id="table">
+						<p:column headerText="ID" filterBy="#{item.id}"
+							sortBy="#{item.id}" filterMatchMode="contains">
+							<h:outputText value="#{item.id}" />
+						</p:column>
+						<p:column headerText="Nombre" filterBy="#{item.nombre}"
+							sortBy="#{item.nombre}" filterMatchMode="exact">
+							<h:outputText value="#{item.nombre}" />
+						</p:column>
+					</p:dataTable>
+				</p:panel>
+			</h:form>
+			<!-- Dialogo para nuevo -->
+
+			<p:dialog modal="true" widgetVar="new_dialog" id="new_dialog"
+				header="Nuevo elemento" width="60%" height="40%">
+				<h:form id="formAlta">
+					<h:panelGrid columns="3">
+						<p:outputPanel id="panelAlta">
+							<p:outputLabel value="Nombre del banco" for="iput_nombre_banco" />
+							<p:inputText id="iput_nombre_banco" required="true"
+								value="#{controladorBanco.bancoNombre}" />
+							<p:watermark value="Nombre de tu banco" for="iput_nombre_banco" />
+						</p:outputPanel>
+
+					</h:panelGrid>
+					<h:panelGrid columns="2">
+						<p:commandButton value="Guardar Nuevo"
+							action="#{controladorBanco.aggregaNuevoBanco}" update="form"
+							oncomplete="PF('new_dialog').hide();" />
+						<p:commandButton value="Cancelar"
+							onclick="PF('new_dialog').hide();" immediate="true" />
+					</h:panelGrid>
+				</h:form>
+			</p:dialog>
+
+			<!-- Dialogo para ver detalle -->
+			<p:dialog modal="true" widgetVar="detalle_dialog" id="detalle_dialog"
+				header="Ver detalle" width="60%" height="40%">
+				<h:form id="formDetalle">
+					<p:outputPanel id="panel_detalle_ver">
+						<h:panelGrid columns="2">
+							<p:outputLabel value="Nombre del banco" for="output_nombre_banco" />
+							<p:inputText id="output_nombre_banco" disabled="true"
+								style="font-weight:bold;"
+								value="#{controladorBanco.currentItem.nombre}" />
+						</h:panelGrid>
+					</p:outputPanel>
+				</h:form>
+			</p:dialog>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
