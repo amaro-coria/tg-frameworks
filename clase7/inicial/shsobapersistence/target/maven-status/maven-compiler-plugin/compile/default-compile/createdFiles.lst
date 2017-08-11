@@ -1,0 +1,12 @@
+net\tecgurus\entities\Tipomovimiento.class
+net\tecgurus\entities\Banco.class
+net\tecgurus\entities\Tipocuenta.class
+net\tecgurus\entities\Login.class
+net\tecgurus\persistence\dao\impl\BancoDAOImpl.class
+net\tecgurus\entities\Cuenta.class
+net\tecgurus\entities\Cliente.class
+net\tecgurus\persistence\dao\impl\GenericDAOImpl.class
+net\tecgurus\persistence\dao\BancoDAO.class
+net\tecgurus\entities\Movimiento.class
+net\tecgurus\persistence\dao\GenericDAO.class
+net\tecgurus\entities\Perfil.class

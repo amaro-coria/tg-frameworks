@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.tecgurus.net/bancoService/1.0"
+        xmlns:tns="http://www.tecgurus.net/bancoService/1.0"
+        elementFormDefault="qualified">
+
+    <!-- Elements -->
+    <element name="BancoDataRequest">
+        <complexType>
+            <sequence>
+                <element name="iden" type="tns:AuditFields"
+                         maxOccurs="1" minOccurs="1"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="BancoDataResponse">
+        <complexType>
+            <sequence>
+                <element name="bancoData" type="tns:BancoData"
+                         maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+
+
+    <!-- Types -->
+
+    <complexType name="AuditFields">
+        <sequence>
+            <element name="user" type="string" minOccurs="1" maxOccurs="1"/>
+            <element name="ip" type="string" minOccurs="1"
+                     maxOccurs="1"/>
+            <element name="unix_time" type="string" minOccurs="1"
+                     maxOccurs="1"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="BancoData">
+        <sequence>
+            <element name="id" type="int" minOccurs="1" maxOccurs="1"/>
+            <element name="nombre" type="string" minOccurs="1" maxOccurs="1"/>
+        </sequence>
+    </complexType>
+
+</schema>
