@@ -46,6 +46,30 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ClienteDataRequest }
+     * 
+     */
+    public ClienteDataRequest createClienteDataRequest() {
+        return new ClienteDataRequest();
+    }
+
+    /**
+     * Create an instance of {@link ClienteDataResponse }
+     * 
+     */
+    public ClienteDataResponse createClienteDataResponse() {
+        return new ClienteDataResponse();
+    }
+
+    /**
+     * Create an instance of {@link ClienteData }
+     * 
+     */
+    public ClienteData createClienteData() {
+        return new ClienteData();
+    }
+
+    /**
      * Create an instance of {@link BancoDataResponse }
      * 
      */

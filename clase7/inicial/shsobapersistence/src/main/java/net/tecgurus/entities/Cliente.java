@@ -26,13 +26,13 @@ public class Cliente implements java.io.Serializable {
 	private String nombre;
 	private String apaterno;
 	private String amaterno;
-	private int edad;
+	private Integer edad;
 	private Set<Cuenta> cuentas = new HashSet<Cuenta>(0);
 
 	public Cliente() {
 	}
 
-	public Cliente(Banco banco, String nombre, String apaterno, String amaterno, int edad) {
+	public Cliente(Banco banco, String nombre, String apaterno, String amaterno, Integer edad) {
 		this.banco = banco;
 		this.nombre = nombre;
 		this.apaterno = apaterno;
@@ -40,7 +40,7 @@ public class Cliente implements java.io.Serializable {
 		this.edad = edad;
 	}
 
-	public Cliente(Banco banco, String nombre, String apaterno, String amaterno, int edad, Set<Cuenta> cuentas) {
+	public Cliente(Banco banco, String nombre, String apaterno, String amaterno, Integer edad, Set<Cuenta> cuentas) {
 		this.banco = banco;
 		this.nombre = nombre;
 		this.apaterno = apaterno;
@@ -51,7 +51,6 @@ public class Cliente implements java.io.Serializable {
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
-
 	@Column(name = "idCliente", unique = true, nullable = false)
 	public Integer getIdCliente() {
 		return this.idCliente;
@@ -99,11 +98,11 @@ public class Cliente implements java.io.Serializable {
 	}
 
 	@Column(name = "edad", nullable = false)
-	public int getEdad() {
+	public Integer getEdad() {
 		return this.edad;
 	}
 
-	public void setEdad(int edad) {
+	public void setEdad(Integer edad) {
 		this.edad = edad;
 	}
 

@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "BancoService", targetNamespace = "http://www.tecgurus.net/bancoService/1.0", wsdlLocation = "file:/C:/Users/Amaro/Documents/PROJECTS_IDEA/TEC_GURUS/sfsobaweb/src/main/webapp/wsdl/bancoService.wsdl")
+@WebServiceClient(name = "BancoService", targetNamespace = "http://www.tecgurus.net/bancoService/1.0", wsdlLocation = "file:/C:/Users/Amaro/Documents/TEC_GURUS_GIT/tg-frameworks/tg-frameworks/clase7/inicial/sfsobaweb/src/main/webapp/wsdl/bancoService.wsdl")
 public class BancoService
     extends Service
 {
@@ -30,7 +30,7 @@ public class BancoService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("file:/C:/Users/Amaro/Documents/PROJECTS_IDEA/TEC_GURUS/sfsobaweb/src/main/webapp/wsdl/bancoService.wsdl");
+            url = new URL("file:/C:/Users/Amaro/Documents/TEC_GURUS_GIT/tg-frameworks/tg-frameworks/clase7/inicial/sfsobaweb/src/main/webapp/wsdl/bancoService.wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }
@@ -75,7 +75,7 @@ public class BancoService
     /**
      * 
      * @param features
-     *     A list of {@link WebServiceFeature} to configure on the proxy.  Supported features not in the <code>features</code> parameter will have their default values.
+     *     A list of {@link javax.xml.ws.WebServiceFeature} to configure on the proxy.  Supported features not in the <code>features</code> parameter will have their default values.
      * @return
      *     returns BancoServicePortType
      */

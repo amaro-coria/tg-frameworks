@@ -1,44 +1,68 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-                  xmlns:tns="http://www.tecgurus.net/bancoService/1.0" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
-                  xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="bancoService"
-                  targetNamespace="http://www.tecgurus.net/bancoService/1.0">
-    <wsdl:types>
-        <xsd:schema targetNamespace="http://www.tecgurus.net/bancoService/">
-            <xsd:import schemaLocation="../schema/bancoService.xsd"
-                        namespace="http://www.tecgurus.net/bancoService/1.0"/>
-        </xsd:schema>
-    </wsdl:types>
-    <wsdl:message name="BancoDataRequest">
-        <wsdl:part name="BancoDataRequest" element="tns:BancoDataRequest"/>
-    </wsdl:message>
-    <wsdl:message name="BancoDataResponse">
-        <wsdl:part name="BancoDataResponse" element="tns:BancoDataResponse"/>
-    </wsdl:message>
+	xmlns:tns="http://www.tecgurus.net/bancoService/1.0" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="bancoService"
+	targetNamespace="http://www.tecgurus.net/bancoService/1.0">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.tecgurus.net/bancoService/">
+			<xsd:import schemaLocation="../schema/bancoService.xsd"
+				namespace="http://www.tecgurus.net/bancoService/1.0" />
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="BancoDataRequest">
+		<wsdl:part name="BancoDataRequest" element="tns:BancoDataRequest" />
+	</wsdl:message>
+	<wsdl:message name="BancoDataResponse">
+		<wsdl:part name="BancoDataResponse" element="tns:BancoDataResponse" />
+	</wsdl:message>
+	<!-- Mensajes para cliente -->
+	<wsdl:message name="ClienteDataRequest">
+		<wsdl:part name="ClienteDataRequest" element="tns:ClienteDataRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="ClienteDataResponse">
+		<wsdl:part name="ClienteDataRespone" element="tns:ClienteDataResponse"></wsdl:part>
+	</wsdl:message>
 
-    <wsdl:portType name="BancoServicePortType">
-        <wsdl:operation name="getDataOperation">
-            <wsdl:input name="BancoDataRequest" message="tns:BancoDataRequest"/>
-            <wsdl:output name="BancoDataResponse" message="tns:BancoDataResponse"/>
-        </wsdl:operation>
-    </wsdl:portType>
-    <wsdl:binding name="BancoServiceBinding" type="tns:BancoServicePortType">
-        <soap:binding style="document"
-                      transport="http://schemas.xmlsoap.org/soap/http"/>
-        <wsdl:operation name="getDataOperation">
-            <soap:operation style="document"
-                            soapAction="http://www.tecgurus.net/bancoService/getDataOperation"/>
-            <wsdl:input name="BancoDataRequest">
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="BancoDataResponse">
-                <soap:body use="literal"/>
-            </wsdl:output>
-        </wsdl:operation>
-    </wsdl:binding>
-    <wsdl:service name="BancoService">
-        <wsdl:port name="BancoServicePort" binding="tns:BancoServiceBinding">
-            <soap:address location="/service/bancoService"/>
-        </wsdl:port>
-    </wsdl:service>
+
+
+	<wsdl:portType name="BancoServicePortType">
+		<wsdl:operation name="getDataOperation">
+			<wsdl:input name="BancoDataRequest" message="tns:BancoDataRequest" />
+			<wsdl:output name="BancoDataResponse" message="tns:BancoDataResponse" />
+		</wsdl:operation>
+		<!-- Operacion para cliente -->
+		<wsdl:operation name="getClientesOperation">
+			<wsdl:input name="ClienteDataRequest" message="tns:ClienteDataRequest" />
+			<wsdl:output name="ClienteDataResponse" message="tns:ClienteDataResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="BancoServiceBinding" type="tns:BancoServicePortType">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="getDataOperation">
+			<soap:operation style="document"
+				soapAction="http://www.tecgurus.net/bancoService/getDataOperation" />
+			<wsdl:input name="BancoDataRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="BancoDataResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getClientesOperation">
+			<soap:operation style="document"
+				soapAction="http://www.tecgurus.net/bancoService/getClientesOperation" />
+			<wsdl:input name="ClienteDataRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="ClienteDataResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="BancoService">
+		<wsdl:port name="BancoServicePort" binding="tns:BancoServiceBinding">
+			<soap:address location="/service/bancoService" />
+		</wsdl:port>
+	</wsdl:service>
 </wsdl:definitions>

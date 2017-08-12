@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:body>
+	<ui:composition template="/WEB-INF/templates/template.xhtml">
+		<ui:define name="content">
+			<p:growl autoUpdate="true" />
+
+			<p:panelGrid columns="1">
+				<p:commandButton value="Ver detalle" icon="ui-icon-zoomin"
+					oncomplete="PF('detalle_dialog').show();"
+					update=":form_detalle:detalle_panel_output" />
+				<p:commandButton value="Agregar" icon="ui-icon-plusthick"
+					onclick="PF('alta_dialog').show();" />
+			</p:panelGrid>
+			<p:accordionPanel>
+				<p:tab title="Informacion de Clientes">
+					<p:outputPanel>
+						<h:form id="formTable">
+							<p:dataTable value="#{clienteController.itemsList}" var="item"
+								rowKey="#{item.idCliente}"
+								selection="#{clienteController.currentItem}"
+								selectionMode="single">
+								<p:column headerText="Nombre" filterBy="#{item.nombre}"
+									sortBy="#{item.nombre}">
+									<h:outputText value="#{item.nombre}" />
+								</p:column>
+								<p:column headerText="Apellido P" filterBy="#{item.apaterno}"
+									sortBy="#{item.apaterno}">
+									<h:outputText value="#{item.apaterno}" />
+								</p:column>
+								<p:column headerText="Apellido M" filterBy="#{item.amaterno}"
+									sortBy="#{item.amaterno}">
+									<h:outputText value="#{item.amaterno}" />
+								</p:column>
+							</p:dataTable>
+						</h:form>
+					</p:outputPanel>
+				</p:tab>
+			</p:accordionPanel>
+
+			<!-- Dialogo de detalle -->
+			<p:dialog id="detalle_dialog" widgetVar="detalle_dialog" modal="true">
+				<h:form id="form_detalle">
+					<p:outputPanel id="detalle_panel_output">
+						<h:panelGrid columns="2">
+							<p:outputLabel value="Nombre" for="detalle_nombre" />
+							<h:outputText value="#{clienteController.currentItem.nombre}"
+								id="detalle_nombre" />
+							<p:outputLabel value="Apellido P" for="detalle_apellidoP" />
+							<h:outputText value="#{clienteController.currentItem.apaterno}"
+								id="detalle_apellidoP" />
+							<p:outputLabel value="Apellido M" for="detalle_apellidoM" />
+							<h:outputText value="#{clienteController.currentItem.amaterno}"
+								id="detalle_apellidoM" />
+							<p:outputLabel value="Edad" for="detalle_edad" />
+							<h:outputText value="#{clienteController.currentItem.edad}"
+								id="detalle_edad" />
+							<p:outputLabel value="Banco" for="detalle_banco" />
+							<h:outputText value="#{clienteController.bancoNombre}"
+								id="detalle_banco" />
+						</h:panelGrid>
+					</p:outputPanel>
+				</h:form>
+			</p:dialog>
+
+			<!-- Dialogo para Alta -->
+			<p:dialog id="alta_dialog" widgetVar="alta_dialog">
+				<h:form id="form_alta">
+					<p:outputPanel id="panel_alta">
+						<h:panelGrid columnClasses="2">
+							<p:outputLabel value="Nombre" for="alta_nombre" />
+							<p:inputText id="alta_nombre"
+								value="#{clienteController.inputAltaNombre}" required="true" />
+							<p:outputLabel value="Apellido P" for="alta_apellido_p" />
+							<p:inputText id="alta_apellido_p"
+								value="#{clienteController.inputAltaApellidoP}" required="true" />
+							<p:outputLabel value="Apellido M" for="alta_apellido_m" />
+							<p:inputText id="alta_apellido_m"
+								value="#{clienteController.inputAltaApellidoM}" />
+							<p:outputLabel value="Edad" for="input_edad" />
+							<p:inputNumber id="input_edad"
+								value="#{clienteController.inputAltaEdad}" required="true" />
+							<p:outputLabel for="input_banco" value="Banco" />
+							<p:selectOneMenu id="input_banco"
+								value="#{clienteController.inputAltaIdBanco}" required="true">
+								<f:selectItem itemLabel="Selecciona un banco" itemValue="0"
+									noSelectionOption="true" />
+								<f:selectItems value="#{clienteController.bancoList}" var="b"
+									itemLabel="#{b.nombre}" itemValue="#{b.idBanco}" />
+							</p:selectOneMenu>
+						</h:panelGrid>
+					</p:outputPanel>
+					<h:panelGrid columns="2">
+						<p:commandButton value="Aceptar"
+							action="#{clienteController.addCliente}"
+							oncomplete="PF('alta_dialog').hide();" />
+						<p:commandButton value="Cancelar"
+							action="#{clienteController.cancel}"
+							onclick="PF('alta_dialog').hide();" />
+					</h:panelGrid>
+
+
+
+
+
+
+
+
+
+
+
+				</h:form>
+			</p:dialog>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

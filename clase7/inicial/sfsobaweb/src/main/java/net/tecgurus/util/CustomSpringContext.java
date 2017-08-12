@@ -1,6 +1,8 @@
 package net.tecgurus.util;
 
 import net.tecgurus.service.BancoService;
+import net.tecgurus.service.ClienteService;
+
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -22,4 +24,9 @@ public class CustomSpringContext implements ApplicationContextAware {
     public static BancoService getBancoServiceBean(){
         return applicationContext.getBean(BancoService.class);
     }
+    
+    public static ClienteService getClienteService(){
+    	return applicationContext.getBean(ClienteService.class);
+    }
+    
 }

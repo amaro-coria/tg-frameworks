@@ -32,7 +32,19 @@ public interface BancoServicePortType {
     @WebMethod(action = "http://www.tecgurus.net/bancoService/getDataOperation")
     @WebResult(name = "BancoDataResponse", targetNamespace = "http://www.tecgurus.net/bancoService/1.0", partName = "BancoDataResponse")
     public BancoDataResponse getDataOperation(
-            @WebParam(name = "BancoDataRequest", targetNamespace = "http://www.tecgurus.net/bancoService/1.0", partName = "BancoDataRequest")
-                    BancoDataRequest bancoDataRequest);
+        @WebParam(name = "BancoDataRequest", targetNamespace = "http://www.tecgurus.net/bancoService/1.0", partName = "BancoDataRequest")
+        BancoDataRequest bancoDataRequest);
+
+    /**
+     * 
+     * @param clienteDataRequest
+     * @return
+     *     returns net.tecgurus.bancoservice._1.ClienteDataResponse
+     */
+    @WebMethod(action = "http://www.tecgurus.net/bancoService/getClientesOperation")
+    @WebResult(name = "ClienteDataResponse", targetNamespace = "http://www.tecgurus.net/bancoService/1.0", partName = "ClienteDataRespone")
+    public ClienteDataResponse getClientesOperation(
+        @WebParam(name = "ClienteDataRequest", targetNamespace = "http://www.tecgurus.net/bancoService/1.0", partName = "ClienteDataRequest")
+        ClienteDataRequest clienteDataRequest);
 
 }

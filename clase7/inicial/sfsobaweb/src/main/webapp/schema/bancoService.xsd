@@ -5,12 +5,12 @@
 
     <!-- Elements -->
     <element name="BancoDataRequest">
-        <complexType>
-            <sequence>
-                <element name="iden" type="tns:AuditFields"
-                         maxOccurs="1" minOccurs="1"/>
-            </sequence>
-        </complexType>
+    	<complexType>
+    		<sequence>
+    			<element name="iden" type="tns:AuditFields"
+    				maxOccurs="1" minOccurs="1" />
+    		</sequence>
+    	</complexType>
     </element>
 
     <element name="BancoDataResponse">
@@ -21,6 +21,26 @@
             </sequence>
         </complexType>
     </element>
+    
+    <element name="ClienteDataRequest">
+    	<complexType>
+    		<sequence>
+    			<element name="iden" type="tns:AuditFields" maxOccurs="1" minOccurs="1" />
+    		</sequence>
+    	</complexType>
+    </element>
+    
+    <element name="ClienteDataResponse">
+    	<complexType>
+    		<sequence>
+    			<element name="clienteData" type="tns:ClienteData" maxOccurs="unbounded" />
+    		</sequence>
+    	</complexType>
+    </element>
+
+
+
+
 
 
     <!-- Types -->
@@ -41,5 +61,17 @@
             <element name="nombre" type="string" minOccurs="1" maxOccurs="1"/>
         </sequence>
     </complexType>
+    
+    <complexType name="ClienteData">
+    	<sequence>
+    		<element name="id" type="int" minOccurs="1" maxOccurs="1" />
+    		<element name="nombre" type="string" minOccurs="1" maxOccurs="1" />
+    		<element name="apellido_paterno" type="string" minOccurs="1" maxOccurs="1" />
+    		<element name="apellido_mater" type="string" />
+    		<element name="edad" type="int" maxOccurs="1" minOccurs="1" />
+    		<element name="id_banco" type="int" maxOccurs="1" minOccurs="1" />
+    	</sequence>
+    </complexType>
+
 
 </schema>
